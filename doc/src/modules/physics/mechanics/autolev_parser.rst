@@ -472,3 +472,43 @@ Gotchas
   in the source code. Search for "<command>" to verify this. Looking at the
   code for the specific command will also give an idea about what form it
   is expected to work in.
+
+
+.. _future_improvements:
+
+Future Improvements
+===================
+
+1. Completing Dynamics Online
+-----------------------------
+The parser has been built by referring to and parsing codes from the
+`Autolev Tutorial <http://web.mae.ufl.edu/~fregly/PDFs/autolev_tutorial.pdf>`_
+and the book *Dynamics Online: Theory and Implementation Using Autolev*.
+Basically, the process involved going through each of these codes,
+validating the parser results and improving the rules if required
+to make sure the codes parsed well.
+
+The parsed codes of these are available on GitLab `here <https://gitlab.com/sympy/autolev-test-examples>`_.
+The repo is private so access needs to be requested.
+As of now, most codes till Chapter 4 of *Dynamics Online* have been parsed. 
+
+Completing all the remaining codes of the book (namely, *2-10*, *2-11*, *rest
+of Ch4*, *Ch5* and *Ch6* (less important) ) would make the parser more complete. 
+
+
+2. Fixing Issues
+----------------
+The second thing to do would be to go about fixing the problems described 
+above in the :ref:`Gotchas <gotchas>` and :ref:`Limitations and Issues <issues>` 
+sections in order of priority and ease. Many of these require changes
+in the parser code while some of these are better fixed by adding some
+functionality to SymPy.
+
+
+3. Switching to an AST
+----------------------
+The parser is currently built using a kind of Concrete Syntax Tree (CST) 
+using the `ANTLR <http://www.antlr.org/>`_ framework. It would be ideal to switch from a CST to an
+Abstract Syntax Tree (AST). This way, the parser code will be independent
+of the ANTLR grammar which makes it a lot more flexible. It would also be
+easier to make changes to the grammar and the rules of the parser.
